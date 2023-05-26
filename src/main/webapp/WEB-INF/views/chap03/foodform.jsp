@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+    <h1>${title}</h1>
     <form action="http://localhost:8181/chap03/foodorder" method="POST">
         고객명:<input type="text" name="customerName"><br/>
         테이블번호:<input type="number" name="tableNumber"><br/>
