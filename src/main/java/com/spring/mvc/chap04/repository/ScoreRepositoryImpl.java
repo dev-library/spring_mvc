@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public class ScoreRepositoryImpl implements ScoreRepository {
 
     // key : 학번, value : 성적정보
@@ -55,11 +56,17 @@ public class ScoreRepositoryImpl implements ScoreRepository {
 
     @Override
     public boolean deleteByStudentNumber(int studentNumber) {
-        return false;
+        if(!scoreMap.containsKey(studentNumber)) return false;
+        scoreMap.remove(studentNumber);
+        return true;
     }
 
     @Override
     public Score findByStudentNumber(int studentNumber) {
         return scoreMap.get(studentNumber);
     }
+
+
+
+
 }

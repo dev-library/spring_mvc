@@ -14,4 +14,5 @@ public class Score {
     private int studentNumber; // 학번
     private int total; // 총점
     private double average; // 평균
+
 }

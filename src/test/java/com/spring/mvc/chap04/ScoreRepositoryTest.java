@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ScoreRepositoryTest {
 
@@ -82,6 +83,27 @@ public class ScoreRepositoryTest {
         assertEquals(4, result.size());
         assertTrue(boolResult); // 실행이 잘 되면 true, 뭔가 오류나면 false
     }
+
+    @DisplayName("저장소에서 2번 학생 삭제 후 리스트 전체조회시 개수는 2개, 다시 2번학생 조회는 null")
+    @Test
+    public void deleteTest(){
+        // given 학생 번호를 저장합니다.
+        int studentNumber = 2;
+
+        // when 해당 번호 학생을 삭제합니다. 그리고 findAll()로 전체 데이터를 가져오고, 2번학생만 가져오기도 다시 합니다.
+        boolean result = repository.deleteByStudentNumber(studentNumber);// 삭제 성공시 true 리턴
+        List<Score> scoreList = repository.findAll();// 2개만 가져와짐
+        Score score = repository.findByStudentNumber(studentNumber);// null
+
+        // then 전체목록의 길이는 2일것이고, score변수에는 null이 담긴다고 단언
+        //assertEquals(2, scoreList.size());
+        assertThat(scoreList.size()).isEqualTo(2); // 위 문법과 같은 단언문
+        assertNull(score);
+        assertTrue(result);// 삭제성공시  true
+    }
+
+
+
 
 
 }
