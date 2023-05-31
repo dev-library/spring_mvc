@@ -28,7 +28,7 @@
                 <c:forEach var="score" items="${scoreList}">
                     <tr>
                         <td>${score.studentNumber}</td>
-                        <td>${score.name}</td>
+                        <td><a href="/score/detail?studentNumber=${score.studentNumber}">${score.name}</a></td>
                         <td>${score.korScore}</td>
                         <td>${score.mathScore}</td>
                         <td>${score.engScore}</td>
